@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dating App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Dating App</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="{{ url_for('create_profile') }}">Create Profile</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Users</h2>
+        <div class="user-list">
+            {% for user in users %}
+                <div class="user">
+                    <h3>{{ user.name }}</h3>
+                    <p><strong>Age:</strong> {{ user.age }}</p>
+                    <p><strong>Bio:</strong> {{ user.bio }}</p>
+                    <p><strong>Gender:</strong> {{ user.gender }}</p>
+                    <p><strong>Preferences:</strong> {{ user.preferences }}</p>
+                    <form action="{{ url_for('match', id=user.id) }}" method="POST">
+                        <label for="match_id">Match with user ID:</label>
+                        <input type="number" id="match_id" name="match_id" required>
+                        {{ form.submit }}
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>
