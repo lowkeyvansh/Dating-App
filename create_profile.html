@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Create Profile</h1>
+        <nav>
+            <a href="/">Home</a>
+        </nav>
+    </header>
+    <main>
+        <form action="{{ url_for('create_profile') }}" method="POST">
+            {{ form.hidden_tag() }}
+            <label for="name">Name:</label>
+            {{ form.name }}
+            <label for="age">Age:</label>
+            {{ form.age }}
+            <label for="bio">Bio:</label>
+            {{ form.bio }}
+            <label for="gender">Gender:</label>
+            {{ form.gender }}
+            <label for="preferences">Preferences:</label>
+            {{ form.preferences }}
+            {{ form.submit }}
+        </form>
+    </main>
+</body>
+</html>
